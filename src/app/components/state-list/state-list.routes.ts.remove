@@ -1,0 +1,17 @@
+import { NgModule }             from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { StateListComponent }    from './state-list.component';
+import { StateRecordsComponent }  from '../state-records/state-records.component';
+
+const stateListRoutes: Routes = [
+  { path: 'state/:stateAbbr', component: StateRecordsComponent }
+];
+@NgModule({
+  imports: [
+    RouterModule.forChild(stateListRoutes)
+  ],
+  exports: [
+    RouterModule
+  ]
+})
+export class StateListRoutingModule { }

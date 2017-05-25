@@ -1,0 +1,22 @@
+import { NgModule }       from '@angular/core';
+import { CommonModule }   from '@angular/common';
+
+import { StateListComponent }    from './state-list.component';
+import { StateRecordsComponent }  from '../state-records/state-records.component';
+
+import { DataSourceCsvService } from '../../services/data-source-csv.service';
+
+import { StateListRoutingModule } from './state-list.routes'
+
+@NgModule({
+  imports: [
+    CommonModule
+  ],
+  declarations: [
+    StateListComponent,
+    StateRecordsComponent,
+    StateListRoutingModule
+  ],
+  providers: [ DataSourceCsvService ]
+})
+export class HeroesModule {}

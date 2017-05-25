@@ -1,0 +1,15 @@
+<h3>State Records for {{ stateName }}</h3>
+<table class="table-striped table-condensed">
+  <tr>
+    <th style="width: 100px">ID</th>
+    <th style="width: 200px">First Name</th>
+    <th style="width: 200px">Last Name</th>
+    <th style="width: 150px">Postal Code</th>
+  </tr>
+  <tr *ngFor="let item of prsnRecords">
+    <td>{{ item.id }}</td>
+    <td>{{ item.firstName }}</td>
+    <td>{{ item.lastName }}</td>
+    <td>{{ item.postalCode }}</td>
+  </tr>
+</table>
