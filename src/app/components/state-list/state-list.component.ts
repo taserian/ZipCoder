@@ -21,10 +21,14 @@ export class StateListComponent implements OnInit {
   results: Array<StateListItem> = new Array<StateListItem>();
 
   constructor(private sfService: SourceFactoryService, private route: ActivatedRoute) {
-      this.dataSource = this.route.snapshot.paramMap.get('source')
-      this.sfService.useService(this.route.snapshot.paramMap.get('source'))
-        .getStates()
-        .subscribe((data: StateList) => this.stateList = data);
+    route.params.subscribe( params => {
+        this.dataSource = params['source'];
+        console.log("Parameter: " + this.dataSource);
+        this.sfService.useService(this.dataSource)
+          .getStates()
+          .subscribe((data: StateList) => this.stateList = data);
+      }
+    )
   }
 
   ngOnInit() {

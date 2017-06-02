@@ -22,18 +22,21 @@ export class StateRecordsComponent implements OnInit {
   SPRecords: StatePersonRecordSet = new StatePersonRecordSet();
   prsnRecords: Array<Person> = new Array<Person>();
 
-  constructor(private sfrService: SourceFactoryService, private route: ActivatedRoute) { 
-    console.log(this.route.snapshot.paramMap.get('source'));
-    this.sfrService.useService(this.route.snapshot.paramMap.get('source'))
-        .getStateRecords(this.route.snapshot.paramMap.get('stateAbbr'))
-        .subscribe((data: StatePersonRecordSet) => {
-          this.SPRecords = data;
-          this.stateName = this.SPRecords.stateName;
-          this.prsnRecords = this.SPRecords.personRecords;
-        });
+  constructor(private sfrService: SourceFactoryService, private route: ActivatedRoute) {
+      route.params.subscribe( params => { 
+        this.dataSource = params['source'];
+        this.stateAbbr = params['stateAbbr'];
+        console.log("Parameter (SR): " + this.dataSource);
+        this.sfrService.useService(this.dataSource)
+          .getStateRecords(this.stateAbbr)
+          .subscribe((data: StatePersonRecordSet) => {
+            this.SPRecords = data;
+            this.stateName = this.SPRecords.stateName;
+            this.prsnRecords = this.SPRecords.personRecords;
+        })
+      });
   }
 
   ngOnInit() {
-
-    }
+  }
 }

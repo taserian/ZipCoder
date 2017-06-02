@@ -8,10 +8,6 @@ const routes: Routes = [
     {path: '', pathMatch: 'full', redirectTo: 'source/csv'},
     {path: 'source/:source', component: StateListComponent},
     {path: 'records/:source/state/:stateAbbr', component: StateRecordsComponent}
-/*    {path: 'xls', pathMatch:'full', component: StateListXlsComponent},
-    {path: 'xml', pathMatch:'full', component: StateListXmlComponent},*/
-    //{path: 'source/:source/state/:stateAbbr', component: StateRecordsComponent},
-
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forRoot(routes);
